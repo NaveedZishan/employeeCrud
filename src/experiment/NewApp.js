@@ -1,52 +1,21 @@
-import React, { useEffect, useState, useContext, createContext } from "react";
-// import { Routes,Route } from "react-router-dom";
+import React, { useEffect, useState, useContext } from "react";
+import { EmppContext } from "./NewMyroute";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import Updation from "./Updation";
-// import Updation from "./Updation";
-const UserContext = createContext()
-function App() {
-  const [showApi, setShowApi] = useState([])
-  // const [updtr,setUpdtr]=useState([])
+import NewUpdation from "./NewUpdation";
+
+function NewApp() {
+  
   const [upname, setUpname] = useState("")
   const [upSalary, setUpSalary] = useState([])
 
-  // const[inpt,setInpt]=useState("")
-  // 
-  // useEffect(() => {
-  //   fetch("http://localhost:3001/employees")
-  //     .then((response) =>(response.json() ) )
+  const showApi = useContext(EmppContext);
+  // console.log("newapp.............",showApi);
 
-  //     .then((data) => {
-
-  //       // console.log(data);
-  //       setShowApi(data)
-  //     })
-
-  // }, [])
-
-
-
-  /////////////////////////////////////////////////////////////////////////////
-  useEffect(() => {
-    axios.get("http://localhost:3001/employees")
-      .then((response) => setShowApi(response.data))
-    // .then((response)=>console.log(response.data))
-  }, [])
-
-
-
-
-  ////////////////////////////////////////////////////////////////////////////
-  // const Delete=(show)=>{
-  //   const newList = showApi.filter((id) => id !==show);
-  //       setShowApi(newList);
-  // }
   const del = (id) => {
     console.log(id);
     axios.delete(`http://localhost:3001/employees/${id}`)
   }
-
 
   const updt = (id) => {
     console.log(id);
@@ -64,12 +33,6 @@ function App() {
       })
       ;
   }
-
-  // const updateName=(e)=>{
-  // setUpname(e.target.value)
-  // console.log(upname);
-  // }
-
   console.log(upname)
   return (
     <div >
@@ -89,7 +52,7 @@ function App() {
             </tr>
             <button onClick={() => { del(show.id) }}>Delete</button>
 
-            <Link to={`/updation/${show.id}`}>
+            <Link to={`/NewUpdation/${show.id}`}>
               <button >Update</button>
               {/* <h3> Update The data</h3> */}
             </Link>
@@ -106,4 +69,4 @@ function App() {
     </div>
   );
 }
-export default App;
+export default NewApp;

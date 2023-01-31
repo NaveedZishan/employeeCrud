@@ -1,0 +1,20 @@
+1st step   install json Server.....
+
+npm i json-Server
+
+then create db.json file  and put the data
+
+2nd step   Check Script in Package.json
+
+3rd step   type....
+
+"server": "json-server -p3001 --watch db.json"
+
+
+4th step   npm run server   
+
+then u will get Api
+  Example:     http://localhost:3001/employees
+
+
+  
